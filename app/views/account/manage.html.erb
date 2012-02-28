@@ -1,0 +1,58 @@
+<%= stylesheet_link_tag 'style' %>
+<%= stylesheet_link_tag 'scaffold' %>
+
+<%= javascript_include_tag :defaults %>
+
+<div style="background-color: white; padding: 15px; margin: 10px; padding-bottom: 50px;">
+	<h2 style="color: white; background-color: #333; padding: 2px; border: 2px solid #dedede;">Users:</h2>
+	<span style="width: 150px; float: left; margin-left: 120px;">
+		<b>Login</b>
+	</span>
+	<span style="width: 150px; float: left;">
+		<b>Role</b>
+	</span>
+	<span style="width: 200px; float: left;">
+		<b>E-mail</b>
+	</span>
+	<span style="width: 150px; float: left;">
+		<b>Password</b>
+	</span>
+	<div style="clear: both; clear: left; "></div>
+		
+	<% for user in @users -%>
+		<div id="temp" value="<%=user.id%>" style="background-color: #efefef; border: 1px solid black; padding: 2px; margin: 2px; font-size: 14px;">
+			<span style="width: 55px; float: left; padding: 2px; font-size: 12px; padding-top: 4px;">
+				<%= link_to( image_tag("icon-delete.gif") + 'Delete', { :action => 'destroy', :id => user.id },
+			  	{ :confirm => "Are you sure?", :method => :delete }) %>	  	
+			</span>
+			<span style="width: 42px; float: left; padding: 2px; font-size: 12px; padding-top: 4px;">
+				<%= link_to_remote 'Modify',
+								   :update => 'change',
+								   :url => { :action => :modify, :id => user.id } %>
+			</span>
+			<span style="width: 150px; float: left; padding: 2px;">
+				<%= user.login %>
+			</span>
+			<span style="width: 150px; float: left; padding: 2px;">
+				<%= user.roles %>
+			</span>
+			<span style="width: 200px; float: left; padding: 2px;">
+				<%= user.email %>
+			</span>
+			<span style="width: 150px; float: left; padding: 2px;">
+				<%= link_to_remote 'Reset/Change',
+									:update => 'change',
+									:url => { :action => :reset_password, :id => user.id } %>
+			</span>
+		</div>
+		<div style="clear: both; clear: left; "></div>
+	<% end -%>
+
+	<div id="change" sytle=" padding-top: 50px; background-color: #efefef; border: 1px solid black;">	
+	</div>
+</div>
+
+<div style="background-color: white; padding: 5px; margin: 10px; font-weight: bold;">
+	<%= link_to 'Back to Main', :controller => 'main', :action => 'main' %>	
+	<%= link_to 'Add an Account', :controller => 'account', :action => 'signup' %>	
+</div>

@@ -1,0 +1,34 @@
+<% form_for :user, :url => {:action => "update", :id => @user } do |f| -%>
+
+	<p><label for="login">Login</label><br/>
+		<%= f.text_field :login %> 
+	</p>
+	
+	<p><label for="Role">Role</label><br/>
+	<SELECT name="user[role]" >	
+		  		<% if @user.roles.include?("admin") %>
+		  			<option selected value="admin">Admin</option>
+		  		<% else %>
+		  			<option value="admin">Admin</option>
+		  		<% end %>
+		  		
+		  		<% if @user.roles.include?("editor") %>
+					<option selected value="editor">User - Upload and Download</option>
+				<% else %>
+					<option value="editor">User - Upload and Download</option>
+				<% end %>
+				
+				<% if @user.roles.include?("viewer") %>
+					<option selected  value="viewer">User - Download</option>
+				<% else %>
+					<option value="viewer">User - Download</option>
+				<% end %>		
+			</SELECT>
+	</p>
+	
+	<p><label for="email">Email</label><br/>
+		<%= f.text_field :email %> 
+	</p>
+	
+	<p><%= submit_tag 'Modify' %></p>
+<% end -%>

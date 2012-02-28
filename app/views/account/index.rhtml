@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" >
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>The Art of Engineering Management Login</title>
+    <link type="text/css" media="screen" rel="stylesheet" href="../stylesheets/style.css" title="default" /> 
+    <style type="text/css" media="screen">
+      body {
+        margin: 0;
+        margin-bottom: 25px;
+        padding: 0;
+        background-color: #333;
+        font-family: "Lucida Grande", "Bitstream Vera Sans", "Verdana";
+        font-size: 13px;
+        color: #333;
+      }
+      
+      h1 {
+        font-size: 28px;
+        color: #000;
+      }
+      </style>    
+  </head>
+  <body>
+    
+      <div id style="background-color: #333; margin: auto; border: 4px solid #aaa; border-top: none; padding: 15px; width: 600px;">
+
+      <h1 style="margin-top: 2px; padding: 4px; background-color: #aaa;  color: #014877; margin-bottom: 0px; border: 2px dashed #888; text-align: center;">The Art of Engineering Management Login</h1>
+      <p style="padding: 10px; font-weight: bold; background-color: #aaa; border: 2px dashed #999; ">You have found the management system login page.  Please enter your username and password.</p>
+      
+	<div style=" background-color: #ddd; border: 2px solid #aaa; padding: 10px;" >
+        <% form_tag do -%>
+		<p style="margin: 0; padding: 0px;"><label for="login">Login</label><br/>
+		<%= text_field_tag 'login' %></p>
+
+		<p><label for="password">Password</label><br/>
+		<%= password_field_tag 'password' %></p>
+
+		<p><label for="remember_me">Remember me:</label>
+		<%= check_box_tag 'remember_me' %></p>
+
+		<p style="margin: 0; padding: 0px;"><%= submit_tag 'Log in' %></p>
+	<% end -%>
+	
+	</div>
+	
+      <p style="text-align: center; background-color: #ddd; border: 2px solid #aaa; ">
+       [<%= link_to 'Add Account', :action => 'signup' %>] 
+        [<%= link_to 'Main Page', '/' %>]
+        [<%= link_to 'Logout', :action => 'logout' %>]
+	</p>
+      
+      </div>
+	
+	
+  </body>
+
+</html>
+
+
+
+
+

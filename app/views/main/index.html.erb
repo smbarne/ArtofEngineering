@@ -1,0 +1,15 @@
+<p style="text-align: left;" >Welcome to The Art of Engineering, the personal portfolio of Stephen Barnes.  Note that this page uses experiemental CSS3 feautres, and is therefore best viewed with Firefox 3.</p>
+<h3>Featured Artwork:</h3>
+<% @media = GalleryMedia.find(144) %>
+<p style="text-align: center;"> 
+		<a href="<%= url_for_file_column("media", "medianame", "artmaximum") %>" class="noHighlight"
+			 	rel="lightbox[GalleryMedia]"
+				 title="Featured Artwork: Final Busts from studies in Rome.">
+			 		<%= image_tag("featured_artwork.png") %>
+			 </a>
+</p>
+<h3>Featured Engineering Project:</h3>
+<p style="text-align: center;"> <a href="/Engineering/#The Art of Engineering_16" class="noHighlight">
+	<%= image_tag("featured_engineering.png") %>
+</a></p>
+<p style="text-align: right;" >Built and maintained using <%= image_tag('rails.png') %></p>

@@ -1,0 +1,12 @@
+<h1>Listing galleries</h1>
+
+
+<% for gallery in @galleries %>
+<p>
+    <span><%= gallery.sTitle %> - Media: [<%= GalleryMedia.find(:all, :conditions => ["gallery_id = ?", gallery.id]).size.to_s %>] - Files: [<%= GalleryFiles.find(:all, :conditions => ["gallery_id = ?", gallery.id]).size.to_s %>]</span>
+    <span><%= link_to 'Show', gallery %> - <%= link_to 'Edit', edit_gallery_path(gallery) %> - <%= link_to 'Destroy', gallery, :confirm => 'Are you sure?', :method => :delete %></span>
+<% end %>
+
+<br/><br/><br/>
+
+<%= link_to 'New gallery', new_gallery_path%>

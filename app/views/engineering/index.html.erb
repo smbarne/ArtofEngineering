@@ -1,0 +1,8 @@
+<% for @gallery in @galleries %>
+	<%= render :partial => "show_engineering" %>
+<% end %>
+
+<% if logged_in? %>
+	<br/><br/>
+	<%= link_to 'New gallery', new_gallery_path %>
+<% end %>

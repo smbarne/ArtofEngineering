@@ -1,0 +1,109 @@
+<h1>Editing gallery</h1>
+
+<%= error_messages_for :gallery %>
+
+<% form_for(@gallery, { :action => 'update' }, :html => {:multipart => true}) do |f| %>
+	  <p>
+	    <b>Title</b><br />
+	    <%= f.text_field :sTitle, :class=>"textbox" %>
+	  </p>
+
+	  <p>
+	    <b>Description</b><br />
+	    <%= f.text_area :tDescription, :class=>"textbox" %>
+	  </p>
+	  
+	  <p>
+	    <b>Type</b><br/>
+	    <select name="gallery[sType]" class="textbox" >
+	    	<%= options_for_select [["Artwork", "Artwork"], ["Engineering", "Engineering"]], @gallery.sType %>
+	    </select>
+	   </p>
+	   
+	   <p>
+	    <b>Order Value</b><br/>
+		<div id="Input1" class="textbox">
+			<%= f.text_field :iOrder %>
+		</div>
+		
+		<div id="Input1Results" class="results"></div>
+		
+		<script type="text/javascript">
+			var combobox = new ComboBox('Input1', 'Input1Results', 
+			[
+				<% for choice in @iOrders do -%>
+					<%= '"' + choice + '", ' %>
+				<% end -%>
+			]
+			);
+		</script>	  
+	   </p>
+	   
+	   <p>
+	    <b>Add Media Upload</b><br/>	    
+	    <input type="file" id="gallery_media" name="gallery_media">
+		    <div id="gallery_media_list"></div>
+		    <script type="text/javascript">
+		         var multi_selector = new MultiSelector( document.getElementById('gallery_media_list'), 0, 'gallery_media');
+        		 multi_selector.addElement( document.getElementById( 'gallery_media' ) );
+       			 </script>
+	  </p>
+
+	  <p>
+	    <b>Add File(s) Upload</b><br/>	    
+	    <input type="file" id="gallery_files" name="gallery_files">
+		    <div id="gallery_files_list"></div>
+		    <script type="text/javascript">
+		         var multi_selector = new MultiSelector( document.getElementById('gallery_files_list'), 0, 'gallery_files');
+        		 multi_selector.addElement( document.getElementById( 'gallery_files' ) );
+       			 </script>
+	  </p>	 
+	  
+	    <p><b>Current Media Uploaded</b><br/>
+	  	<div class="fileOuterDiv">
+	  	<% for file in GalleryMedia.find(:all, :conditions => ["gallery_id = ?", @gallery.id]) do -%>	
+	  		<div id="<%= "Media_#{file.id.to_s}" %>" class="fileInnerDiv">
+			<%= link_to_remote( image_tag("icon-delete.gif"),
+			  :url => { :action => :destroy_file, :params => { :file_id => file.id, :id => @gallery.id, :type => "Media" } },
+			  :confirm => "Are you sure?" ) %>
+	  			<span>
+	  				<% temp = file.medianame.split("/") %>
+	  				<%= temp[temp.size-1] %>
+	  			</span>
+	  		</div>
+			<div id="<%= "Media_Attributes_#{file.id.to_s}" %>" class="fileInnerDiv" style="width: 300px; float: right; margin: 1px; margin-top: 0px;">	  			<span>
+	  				Title/Description:
+	  				<% fields_for "gallery[media_fields_update][]", file do |media| %>
+	  					<%= media.text_field :sTitle, :class => "textbox", :style => "margin: 0px; padding: 0px;" %>
+						<%= media.text_area :tDescription, :class=>"textbox", :style=> "margin: 0px; padding: 0px;" %>
+	  				<% end %>
+	  			</span>	  	
+	  		</div>
+	  		<div class="divclear"></div>
+	  	<% end %>
+	  	</div>
+	  </p>
+	  
+	  <p><b>Current Files Uploaded</b><br/>
+	  	<div class="fileOuterDiv">
+	  	<% for file in GalleryFiles.find(:all, :conditions => ["gallery_id = ?", @gallery.id]) do -%>	
+	  		<div id="<%= "File_#{file.id.to_s}" %>" class="fileInnerDiv">
+			<%= link_to_remote( image_tag("icon-delete.gif"),
+			  :url => { :action => :destroy_file, :params => { :file_id => file.id, :id => @gallery.id, :type => "File"} },
+			  :confirm => "Are you sure?" ) %>
+	  			<span>
+	  				<% temp = file.filename.split("/") %>
+	  				<%= temp[temp.size-1] %>
+	  			</span>
+	  		</div>
+	  	<% end %>
+	  	</div>
+	  </p>
+	   
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @gallery %> |
+<%= link_to 'Back', galleries_path %>

@@ -1,0 +1,370 @@
+/*Color List*/
+/*	dark-dark green: 09171a*/
+/*	orange: ef7d41*/
+/*	blue: 4582ed*/
+/*	dark-grey: 191f1f*/
+/*	mid-dark green: 364646*/
+/*	light green: 435758*/
+/*	bright border edge: 616f6f*/
+/*	shade border edge: 010302*/
+/*  old background green: 09171a*/
+/*  background green: 0b171a*/
+/*  current background green: 121616*/
+
+
+    html,body {
+		margin: 0;
+        padding: 0;
+        background-color: #121616;
+        font: 75% "Bitstream Vera Sans", sans-serif;
+        font-size: 13px;
+        height: 100%;
+      }
+      
+	h1 {
+        font-size: 28px;
+		color: white;
+		margin-top: 4px;
+		margin-bottom: 6px;
+	}
+      
+	h2 {
+	    font-size: 20px;
+	    color: #ef7d41;
+	}
+      
+	h3 {
+	    color: #aaa;
+	}
+	    
+	a { 
+		color: #4582ed;
+		text-decoration: none;
+		font-weight: 600;
+	  }
+		  
+	a:visited {
+		color: #236099;
+		  }
+		  
+	a:hover { 
+		background-color:#222;
+		  }
+		  
+		  
+	p {
+		color: white;
+		font-weight: 600;
+	}
+	  	  
+    img {
+		  border: none;
+	  }
+	  
+	#Content {
+		float: right;
+		width: 565px;
+		margin-right: 10px;
+		margin-top: -50px;
+		margin-bottom: 35px;
+		padding: 10px;
+		text-align: left;
+		background-image: url('../images/shader.png');
+		background-repeat: repeat;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		border: 2px solid #616f6f;
+	  }
+	  
+	  #Content p{
+	  	font-size: 13px;
+	  }
+	  
+	  #Footer {
+	  	position: absolute;
+	  	bottom: 0px !important;
+	  	left: auto;
+	  	margin-left: 67px;
+	  	width: 802px;
+		background-image: url('../images/shader.png');
+		background-repeat: repeat;
+	  	height: 20px;
+	  	text-align: right;
+	  }
+	  
+	  #Footer p{
+	  	margin: 0px;
+	  	padding: 0px;
+	  }
+	  
+	  #Footer span{
+	  	color: white;
+	  	padding-right: 10px;
+	  	padding-top: 3px;
+	  	padding-bottom: 3px;
+	  	font-weight: 600;
+	  	font-size: 13px;
+	  }
+	  
+	  #Footer a{
+		font-size: 11px;
+	  }
+	  	  
+	  #Header {
+	  	 height: 375px;
+		 background-repeat: no-repeat;
+	  }
+	  
+	  #InnerMain {	  
+		  margin: 0px 68px;
+		  width: 800px;
+		  padding: 0px;
+		  /*background-color: #435758;
+		  background-image: url('../images/Inner-background.png');
+          background-repeat: repeat-y;*/  		
+	  }
+	  
+	  #Main {
+	  	  position: relative;
+	  	  bottom: auto;
+	  	  min-height: 100%;  
+		  margin: 0 auto;
+		  width: 936px;
+		  background-image: url('../images/Main-sidebars.png');
+          background-repeat: repeat-y;
+		  padding: 0px;	  
+		  height: auto !important;
+	  }
+	  
+	  html>body #Main {
+		height: 100%;
+      }
+		
+	  #MediaContainer {
+	  	padding: 0px;
+	  	margin-top: 3px;
+	  	-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		border: 2px solid #616f6f; 
+ 	 	background-image: url('../images/shader.png');
+		background-repeat: repeat;
+	  }
+	  
+	  #Sidebar {
+		  float: left;
+		  width: 170px;
+		  margin-left: 10px;
+		  margin-top: -175px;
+		  background-image: url('../images/shader.png');
+		  background-repeat: repeat;
+		  -moz-border-radius: 5px;
+		  -webkit-border-radius: 5px;
+		  border: 2px solid #616f6f; 
+		  padding: 4px;
+		  /*-webkit-border-image: url('../image/shader.png') 27 27 27 27 round round;*/
+		  /*border-image-right: url('../images/shader.png');*/
+	  }
+	  
+	  #Sidebar h3 {
+	  	color: white;
+	  	background-color: #191f1f;
+	  	border-top: 1px solid #ef7d41;
+	  	border-bottom: 1px solid #ef7d41;
+	  	margin-top: 0px;
+	  	margin-bottom: 3px;
+	  	padding: 2px;
+	  	font: 600 15px Georgia;
+	  }
+	  
+	  #Sidebar span {
+	  	margin-top: 2px;
+	  	margin-bottom: 2px;
+	  	padding: 0px;
+	  	padding-left: 10px;
+	  	color: #ef7d41;
+	  	font-size: 12px;
+	  }
+	  
+	  #Sidebar a {
+	  	color: white;
+	  	border: none;
+	  	text-decoration: none;
+	  }
+	  
+	  #Sidebar p{
+	  	color: #ef7d41;
+	  	margin: 0px;
+	  	padding: 2px;
+	  	padding-left: 10px;
+	  	
+	  }
+	  
+	  #Title {
+		float: right;
+		margin-top: -140px;
+		text-align: right;
+		margin-right: 14px;
+	  }
+	  
+  	  #Title a {
+  	  	font: 600 30px/28px "Verdana";
+	  	margin: 0px;
+	  	padding: 0px;
+	  	color: white;
+	  	text-decoration: none;
+	  	border: none;	  	
+		}	  
+	
+	   #Title a:hover {
+		background-color: transparent;
+ 	 	}
+
+	  #Title p {
+	  	margin-top: 4px;
+	  	margin-right: 18px;
+	  	color: #ef7d41;
+	  	font: 12px "Bitstream Vera Sans";	  	
+	  	font-weight: 600;
+	  }
+	
+	.divclear {
+		clear: both;
+	}
+	
+	.descriptionText {
+		margin-left: 10px;
+		margin-top: 0px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		border: 2px solid #616f6f; 
+ 	 	background-image: url('../images/shader.png');
+		background-repeat: repeat;
+		padding: 5px;
+	}
+		
+	.EngineeringGallery {
+	
+	}
+	
+	.EngineeringGallery h2{
+		float: left;
+		width: 430px;
+		margin-left: 5px;
+	}
+	
+	.EngineeringGallery p {
+		margin-left: 5px;
+		margin-top: 0px;
+		padding: 5px;
+		float: left;
+		width: 425px;
+	}
+	
+	.fileOuterDiv {
+	 	background-color: #bbb;
+	 	margin-left: 15px;
+	 	width: 350px;
+	 	padding: 5px;
+	 	padding-bottom: 1px;
+	 }
+	 
+	 .fileInnerDiv {
+	 	padding: 3px;
+	 	background-color: #444;
+	 	margin-bottom: 5px;
+	 }
+	 
+	 .fileInnerDiv span {
+	 	padding: 1px;
+	 	color: white;
+	 	font-weight: bold;
+	 }
+	  
+	 .Gallery {
+	  
+	  }
+	  
+	  .Gallery h2{
+	  	background-color: #1a282b;
+	  	margin-bottom: 3px;
+	  	margin-top: 0px;
+	  	padding: 2px;
+	  }
+	  
+	  .Gallery p{
+	  
+	  }
+	  
+	  .GalleryEngineeringPic {
+	  	margin-bottom: 3px;
+	  	padding: 2px;
+	  	width: 135px;
+	  	text-align: center;
+	  	float: left;
+	  }
+	  
+	  .GalleryArtworkPic {
+	  	margin-bottom: 3px;
+	  	padding: 2px;
+	  	width: 137px;
+	  	text-align: center;
+	  	float: left;
+	  }
+	  
+	  .infoBox {
+		  /*background-image: url('../images/shader.png');
+		  background-repeat: repeat-both;*/
+		  -moz-border-radius: 5px;
+		  -webkit-border-radius: 5px;
+		  border: 2px solid #616f6f; 
+		  padding: 8px;
+	  }
+	
+	.noHighlight:hover {
+	  	background-color: transparent;
+	  }
+	
+	
+	  
+	/* 
+	// Style Information for Scriptaculous ComboBox --------------------------------------------------
+	*/
+	.results {
+		z-index: 100;
+	}
+	
+	.results ul {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		border: 1px solid #666;
+	}
+		
+	.results li { 
+		list-style-type: none; 
+		margin: 0; 
+		padding: 0 4px;
+		background-color: white;
+		z-index: 1000;
+	}	
+
+	* html .results ul {
+		position: relative;
+		height: 1%;
+	}
+
+	.results li.selected {
+		color: #fff;
+		background: #004376;
+	}
+		
+	.textbox { 
+			border: 1px solid #666;
+			z-index: 0;
+		}
+		
+	.textbox input { 
+		border: 0; 
+		padding: 0 2px;
+		z-index: 0;
+	}

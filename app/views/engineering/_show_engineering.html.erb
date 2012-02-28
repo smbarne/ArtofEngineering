@@ -1,0 +1,41 @@
+<div id="<%= @gallery.sTitle.to_s.gsub(/ /,'') + "_" + @gallery.id.to_s %>" class="Gallery">
+	<% @medias = GalleryMedia.find(:all, :conditions => ["gallery_id = ?", @gallery.id]) %>
+	<div class="EngineeringGallery">
+
+		<% @media = @medias.first  %>
+		<% if @media != nil %>
+			<%= link_to_remote( 
+				image_tag( url_for_file_column("media", "medianame", "thumb" ), :style => "float: left"),
+				:class => "noHighlight",
+				:url => { :action => "show_media", :params => { :id => @gallery.id } } )%>
+			<h2><%= @gallery.sTitle %></h2>
+			<p><%= @gallery.tDescription %></p>
+		<% else %>
+			<h2 style="margin-left: 0px; width: 560px;"><%= @gallery.sTitle %></h2>
+			<p style="margin-left: 130px; float: none;"><%= @gallery.tDescription %></p>
+		<% end %>
+	</div>
+	<div class="divclear"></div>
+		
+	<div id="Gallery_Media_<%= @gallery.id %>" style="display: none;"></div>
+
+	<% @files = GalleryFiles.find(:all, :conditions => ["gallery_id = ?", @gallery.id]) %>
+	
+	<div style="margin-left: 135px;">
+	<%= '<h3 style="color: #ef7d41; font-family: Georgia; font-weight: 600;"><b>Files</b></h3>' if @files.size > 0 %>
+		<% if @files.size > 0 %>
+			<ul style="color: #ef7d41;">
+			<% for @file in @files %>
+				<% fnames = @file.filename.split("/") %>
+				<li><a href="<%= url_for_file_column("file", "filename") %>">
+					<%= fnames[fnames.size - 1] %>
+				</a></li>
+			<% end %>
+		</ul>
+		<% end %>
+	</div>
+</div>
+<% if logged_in? %>	
+	<%= link_to 'Edit', edit_gallery_path(@gallery) %>
+<% end %>
+

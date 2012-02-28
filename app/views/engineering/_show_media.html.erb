@@ -1,0 +1,25 @@
+	<div id="MediaContainer">
+		<% x = 0 %>
+		<% @medias = GalleryMedia.find(:all, :conditions => ["gallery_id = ?", @gallery.id]) %>
+		<% for @media in @medias %>
+		<div class="GalleryEngineeringPic">
+			<a href="<%= url_for_file_column("media", "medianame", "maximum") %>" class="noHighlight"
+			 	rel="lightbox[GalleryMedia]"
+				 title="<%= @media.sTitle.to_s + "<br/><br/>" + @media.tDescription.to_s if (@media.sTitle != nil  && @media.tDescription != nil)%>">
+			 		<img src="<%= url_for_file_column("media", "medianame", "thumb") %>"  />
+			 </a>
+ 		</div>
+		<% x = x + 1 %>
+		<%= '<div class="divclear"></div>' if x % 4 == 0 %>
+		<% end %>
+		
+		<div class="divclear"></div>
+
+	<div style="text-align: center; width: 100%; ">
+				<%= link_to_remote( 
+				image_tag("media-arrow.png"),
+				:style => "width: 100%; text-align: center;",
+				:url => { :action => "hide_media", :params => { :id => @gallery.id } } )%>
+	</div>
+	</div>
+	

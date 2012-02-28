@@ -1,0 +1,67 @@
+	<h1>New Gallery</h1>
+
+	<%= error_messages_for :gallery %>
+
+	<% form_for(@gallery, { :action => 'do_file_upload' }, :html => {:multipart => true}) do |f| %>
+	  <p>
+	    <b>Title</b><br />
+	    <%= f.text_field :sTitle, :class=>"textbox" %>
+	  </p>
+
+	  <p>
+	    <b>Description</b><br />
+	    <%= f.text_area :tDescription, :class=>"textbox" %>
+	  </p>
+	  
+	  <p>
+	    <b>Type</b><br/>
+	    <select name="gallery[sType]" class="textbox" >
+	    	<%= options_for_select [["Artwork", "Artwork"], ["Engineering", "Engineering"]] %>
+	    </select>
+	   </p>
+	   
+	   <p>
+	    <b>Order Value</b><br/>
+		<div id="Input1" class="textbox">
+			<%= f.text_field :iOrder %>
+		</div>
+		
+		<div id="Input1Results" class="results"></div>
+		
+		<script type="text/javascript">
+			var combobox = new ComboBox('Input1', 'Input1Results', 
+			[
+				<% for choice in @iOrders do -%>
+					<%= '"' + choice + '", ' %>
+				<% end -%>
+			]
+			);
+		</script>	  
+	   </p>
+
+	  <p>
+	    <b>File Upload</b><br/>	    
+	    <input type="file" id="gallery_files" name="gallery_files">
+		    <div id="gallery_files_list"></div>
+		    <script type="text/javascript">
+		         var multi_selector = new MultiSelector( document.getElementById('gallery_files_list'), 0, 'gallery_files');
+        		 multi_selector.addElement( document.getElementById( 'gallery_files' ) );
+       			 </script>
+	  </p>	 
+	  
+	  <p>
+	    <b>Media Upload</b><br/>	    
+	    <input type="file" id="gallery_media" name="gallery_media">
+		    <div id="gallery_media_list"></div>
+		    <script type="text/javascript">
+		         var multi_selector = new MultiSelector( document.getElementById('gallery_media_list'), 0, 'gallery_media');
+        		 multi_selector.addElement( document.getElementById( 'gallery_media' ) );
+       			 </script>
+	  </p>	 
+	 
+	  <p>
+	    <%= f.submit "Create" %>
+	  </p>
+	<% end %>
+
+	<%= link_to 'Back', :controller => 'gallery', :action => 'manage' %>

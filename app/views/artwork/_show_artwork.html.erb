@@ -1,0 +1,30 @@
+<div id="<%= "Gallery_" + @gallery.id.to_s %>" name="<%= "Gallery_" + @gallery.id.to_s %>" class="Gallery">
+	<h1><%= @gallery.sTitle %></h1>
+
+	<p class="descriptionText"><%= @gallery.tDescription %></p>
+
+	<p><span style="margin: 0px; padding: 0px;"><%= will_paginate @medias %></span></p>
+
+		<% x = 0 %>
+		<% for @media in @medias %>
+		<div class="GalleryArtworkPic">
+			<a href="<%= url_for_file_column("media", "medianame", "maximum") %>" class="noHighlight"
+			 	rel="lightbox[GalleryMedia]"
+				 title="<%= @media.sTitle.to_s + "<br/><br/>" + @media.tDescription.to_s if (@media.sTitle != nil  && @media.tDescription != nil)%>">
+			 		<img src="<%= url_for_file_column("media", "medianame", "medium") %>"  />
+			 </a>
+		</div>
+		<% x = x + 1 %>
+		<%= '<div class="divclear"></div>' if x % 4 == 0 %>
+		<% end %>
+		
+		<div class="divclear"></div>
+
+	
+	<p style="text-align: right; width: 565px; margin-top: 5px;"><span style="margin: 0px;  padding: 0px;"><%= will_paginate @medias %></span></p>
+</div>
+<% if logged_in? %>	
+	<%= link_to 'Edit', edit_gallery_path(@gallery) %>
+<% end %>
+
+

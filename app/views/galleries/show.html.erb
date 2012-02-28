@@ -1,0 +1,38 @@
+<div id="Gallery" name="<%= "Gallery_" + @gallery.id.to_s %>" >
+	<h1><%= @gallery.sTitle %></h1>
+
+	<p><%= @gallery.tDescription %></p>
+	
+	<h2>Media:</h2>
+	<p>
+		<span>
+		<% @medias = GalleryMedia.find(:all, :conditions => ["gallery_id = ?", @gallery.id]) %>
+		<% for @media in @medias %>
+			<a href="<%= url_for_file_column("media", "medianame", "maximum") %>" class="noHighlight"
+			 	rel="lightbox[GalleryMedia]"
+ 				 title="<%= @media.sTitle.to_s + "<br/><br/>" + @media.tDescription.to_s if (@media.sTitle != nil  && @media.tDescription != nil)%>">
+			 		<img src="<%= url_for_file_column("media", "medianame", "thumb") %>"  />
+			 </a>
+		<% end %>
+		</span>
+	</p>
+	
+	<h2>Files</h2>
+	<p>
+		<% @files = GalleryFiles.find(:all, :conditions => ["gallery_id = ?", @gallery.id]) %>
+		<ul>
+		<% for @file in @files %>
+			<% fnames = @file.filename.split("/") %>
+			<li><a href="<%= url_for_file_column("file", "filename") %>">
+				<%= fnames[fnames.size - 1] %>
+			</a></li>
+		<% end %>
+		</ul>
+	</p>
+</div>
+<% if logged_in? %>	
+	<%= link_to 'Edit', edit_gallery_path(@gallery) %> |
+	<%= link_to 'Back', galleries_path %>
+<% end %>
+
+

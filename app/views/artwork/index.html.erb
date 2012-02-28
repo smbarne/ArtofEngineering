@@ -1,0 +1,8 @@
+<% for @gallery in @galleries %>
+	<h2><%= link_to @gallery.sTitle, :action => "show", :params => {:id => @gallery.id} %></h2>
+	<p class="descriptionText"><%= @gallery.tDescription %></p>
+<% end %>
+
+<% if logged_in? %>
+	<%= link_to 'New gallery', new_gallery_path %>
+<% end %>
